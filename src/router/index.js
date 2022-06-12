@@ -5,31 +5,30 @@ Vue.use(VueRouter)
 
 const routes = [
     {
-        path: '/student',
-        redirect: '/student/login',
+        path: '/',
+        redirect: '/index',
     },
     {
-        path: '/student/login',
-        name: 'studentLogin',
-        component: () => import('../views/StudentLogin.vue'),
+        path: '/login',
+        name: 'login',
+        component: () => import('../views/LoginView.vue'),
     },
     {
-        path: '/teacher',
-        redirect: '/teacher/login',
-    },
-    {
-        path: '/teacher/login',
-        name: 'teacherLogin',
-        component: () => import('../views/TeacherLogin.vue'),
-    },
-    {
-        path: '/admin',
-        redirect: '/admin/login',
-    },
-    {
-        path: '/admin/login',
-        name: 'adminLogin',
-        component: () => import('../views/AdminLogin.vue'),
+        path: '/index',
+        name: 'index',
+        component: () => import('../views/HomeView.vue'),
+        children: [
+            {
+                path: 'student',
+                name: 'student',
+                component: () => import('../views/StudentView.vue'),
+            },
+            {
+                path: 'admin',
+                name: 'admin',
+                component: () => import('../views/AdminView.vue'),
+            }
+        ]
     }
 ]
 

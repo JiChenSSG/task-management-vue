@@ -1,11 +1,7 @@
 <template>
   <div id="app">
-    <el-row>
-      <el-button type="primary" @click="switchStudent">学生登录</el-button>
-      <el-button type="primary" @click="switchAdmin">管理员登录</el-button>
-    </el-row>
     <el-form ref="form" :model="LoginForm" label-width="80px">
-      <div class="title">教师登录</div>
+      <div class="title">管理员登录</div>
       <el-form-item label="用户名">
         <el-input
           v-model="LoginForm.username"
@@ -28,7 +24,7 @@
 
 <script>
 export default {
-  name: "TeacherLogin",
+  name: "LoginView",
   data() {
     return {
       LoginForm: {
@@ -41,13 +37,13 @@ export default {
     login() {
       this.$axios({
         method: "post",
-        url: "/Teacher/login",
+        url: "/admin/login",
         data: this.LoginForm,
       })
         .then((res) => {
           if (res.data.code === 200) {
             this.$message.success("登录成功");
-            this.$router.push("/Teacher/index");
+            this.$router.push("/index");
           } else {
             this.$message.error(res.data.msg);
           }
@@ -55,12 +51,6 @@ export default {
         .catch((err) => {
           console.log(err);
         });
-    },
-    switchStudent() {
-      this.$router.push("/student/login");
-    },
-    switchAdmin() {
-      this.$router.push("/admin/login");
     },
   },
 };
