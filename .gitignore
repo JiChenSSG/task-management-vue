@@ -2,6 +2,7 @@
 node_modules
 /dist
 
+.jsbeautifyrc
 
 # local env files
 .env.local
