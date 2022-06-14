@@ -27,7 +27,12 @@ const routes = [
                 path: 'admin',
                 name: 'admin',
                 component: () => import('../views/AdminView.vue'),
-            }
+            },
+            {
+                path: 'task',
+                name: 'task',
+                component: () => import('../views/TaskView.vue'),
+            },
         ]
     }
 ]
